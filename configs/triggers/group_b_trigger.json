@@ -1,0 +1,38 @@
+{
+  "group_name": "Group B",
+  "description": "Алгоритмическая группа с паттерном 'первые 3 покупки'",
+  "identification": {
+    "pattern": "first_3_buys_sum",
+    "expected_value": 1659.0,
+    "tolerance_percent": 0.1,
+    "minimum_buys": 3,
+    "timeframe_hours": 24
+  },
+  "trigger_analysis": {
+    "primary_pattern": "coordinated_activity",
+    "coordination_threshold": 5,
+    "coordination_window_minutes": 10,
+    "volume_spike_threshold": 2.0,
+    "wallet_sync_tolerance_seconds": 30
+  },
+  "dump_detection": {
+    "exit_signal_lag_minutes": 3.5,
+    "volume_confirmation_threshold": 1.5,
+    "price_drop_threshold_percent": 10.0,
+    "monitoring_window_minutes": 15
+  },
+  "risk_management": {
+    "max_position_sol": 50.0,
+    "stop_loss_percent": 5.0,
+    "take_profit_percent": 15.0,
+    "cooldown_minutes": 30
+  },
+  "validation": {
+    "minimum_historical_examples": 3,
+    "required_success_rate": 0.7,
+    "backtest_period_days": 30
+  },
+  "status": "PENDING_VALIDATION",
+  "last_updated": "2025-06-23T22:09:00Z",
+  "version": "1.0"
+} 

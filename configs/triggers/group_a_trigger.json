@@ -1,0 +1,45 @@
+{
+  "group_name": "Group A",
+  "description": "Первая проанализированная группа с паттерном тестовых транзакций",
+  "identification": {
+    "pattern": "test_transaction",
+    "expected_characteristics": {
+      "small_amount_range": [0.001, 0.01],
+      "specific_wallets": "identified_via_analysis",
+      "timeframe_before_dump_minutes": 10
+    }
+  },
+  "trigger_analysis": {
+    "primary_pattern": "test_transaction_detection",
+    "coordination_threshold": 3,
+    "coordination_window_minutes": 5,
+    "volume_spike_threshold": 1.8,
+    "wallet_sync_tolerance_seconds": 60
+  },
+  "dump_detection": {
+    "exit_signal_lag_minutes": 2.0,
+    "volume_confirmation_threshold": 1.3,
+    "price_drop_threshold_percent": 15.0,
+    "monitoring_window_minutes": 10
+  },
+  "risk_management": {
+    "max_position_sol": 30.0,
+    "stop_loss_percent": 8.0,
+    "take_profit_percent": 20.0,
+    "cooldown_minutes": 45
+  },
+  "validation": {
+    "minimum_historical_examples": 5,
+    "required_success_rate": 0.75,
+    "backtest_period_days": 60
+  },
+  "historical_performance": {
+    "tokens_analyzed": 2,
+    "valid_patterns_found": 1,
+    "anomalous_days_detected": 2,
+    "test_transactions_identified": 22
+  },
+  "status": "VALIDATED",
+  "last_updated": "2025-06-23T22:09:00Z",
+  "version": "1.0"
+} 

@@ -1,0 +1,35 @@
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "blockTime": 1700000000,
+    "meta": {
+      "err": null,
+      "fee": 5000,
+      "innerInstructions": [],
+      "logMessages": [],
+      "postBalances": [4999995000, 5000005000],
+      "preBalances": [5000000000, 5000000000],
+      "status": { "Ok": null }
+    },
+    "slot": 200000000,
+    "transaction": {
+      "message": {
+        "accountKeys": [
+          "FromAcct1111111111111111111111111111111111",
+          "ToAcct111111111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ],
+        "instructions": [
+          {
+            "accounts": [0, 1],
+            "data": "3Bxs3zvX19cRxrhM",
+            "programIdIndex": 2
+          }
+        ],
+        "recentBlockhash": "Blockhash1111111111111111111111111111111111"
+      },
+      "signatures": ["SignatureForSystemProgramTransferTest1111111111111111111111111111111111111111111111111111111111"]
+    }
+  },
+  "id": "test-system-transfer"
+} 

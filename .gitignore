@@ -1,0 +1,49 @@
+# Rust/Cargo build artifacts
+/target
+Cargo.lock
+
+# Solana credentials and logs
+.solana/
+*.log
+
+# Environment variables
+.env*
+
+# Node.js dependencies
+node_modules/
+/node_modules
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+
+# Build & Test output
+dist/
+coverage/
+build/
+
+# IDE-specific files
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# macOS specific
+.DS_Store
+
+# Application Data / Test Data
+/data/
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+
+# Data Artifacts, Logs & Reports
+*.csv
+*.log
+*.txt
+!requirements.txt

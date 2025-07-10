@@ -1,0 +1,18 @@
+# Папки с зависимостями
+node_modules/
+.venv/
+vendor/
+venv310/
+helius_raw_dump/
+cursor-memory-bank/
+
+
+# Результаты сборки и логи
+dist/
+build/
+*.log
+
+# Изображения, архивы и другие бинарные файлы
+*.png
+*.jpg
+*.zip

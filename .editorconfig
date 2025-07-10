@@ -1,0 +1,13 @@
+# EditorConfig помогает поддерживать единый стиль кода в различных редакторах
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Для текстовых файлов устанавливаем кодировку UTF-8 без BOM
+[*.{py,json,md,yaml,yml,in,txt,js}]
+charset = utf-8 

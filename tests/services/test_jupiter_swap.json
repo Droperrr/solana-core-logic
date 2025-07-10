@@ -1,0 +1,47 @@
+{
+  "blockTime": null,
+  "meta": {
+    "computeUnitsConsumed": null,
+    "err": null,
+    "fee": null,
+    "innerInstructions": [],
+    "logMessages": [
+      "<Jupiter logs here, optional>"
+    ],
+    "postBalances": [],
+    "preBalances": [],
+    "postTokenBalances": [
+      {
+        "accountIndex": 0,
+        "mint": "<token_mint>",
+        "owner": "<owner_pubkey>",
+        "uiTokenAmount": {"amount": "<amount>", "decimals": 6}
+      }
+    ],
+    "preTokenBalances": [
+      {
+        "accountIndex": 0,
+        "mint": "<token_mint>",
+        "owner": "<owner_pubkey>",
+        "uiTokenAmount": {"amount": "<amount>", "decimals": 6}
+      }
+    ]
+  },
+  "slot": null,
+  "transaction": {
+    "message": {
+      "accountKeys": [
+        {"pubkey": "<initiator_pubkey>", "signer": true, "writable": true}
+      ],
+      "header": {},
+      "instructions": [
+        "<Jupiter swap instructions>"
+      ],
+      "recentBlockhash": "<blockhash>"
+    },
+    "signatures": [
+      "<transaction_signature>"
+    ]
+  },
+  "version": "legacy"
+} 

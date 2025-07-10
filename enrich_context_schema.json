@@ -1,0 +1,267 @@
+{
+  "$defs": {
+    "EnricherMetadata": {
+      "description": "Метаданные о версии и имени обогатителя.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "title": "EnricherMetadata",
+      "type": "object"
+    },
+    "ExoticTokenDetails": {
+      "description": "Дополнительные детали для экзотических токенов (fee-on-transfer, rebase и др.).",
+      "properties": {
+        "token_behavior": {
+          "enum": [
+            "fee_on_transfer",
+            "rebase"
+          ],
+          "title": "Token Behavior",
+          "type": "string"
+        },
+        "loss_due_to_tokenomics": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Потери в UI-юнитах из-за механики токена.",
+          "title": "Loss Due To Tokenomics"
+        }
+      },
+      "required": [
+        "token_behavior"
+      ],
+      "title": "ExoticTokenDetails",
+      "type": "object"
+    },
+    "ProtocolDetails": {
+      "description": "Детали, специфичные для протокола (DEX, bridge и др.).",
+      "properties": {
+        "protocol_name": {
+          "title": "Protocol Name",
+          "type": "string"
+        },
+        "pool_address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pool Address"
+        },
+        "price_impact_pct": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Impact Pct"
+        }
+      },
+      "required": [
+        "protocol_name"
+      ],
+      "title": "ProtocolDetails",
+      "type": "object"
+    },
+    "QCContext": {
+      "description": "Контекст контроля качества данных.\nОценивает достоверность, хранит теги QC и сообщения об ошибках.",
+      "properties": {
+        "confidence_score": {
+          "description": "Совокупная оценка уверенности в качестве обогащения от 0.0 (нет данных) до 1.0 (полностью достоверно).",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence Score",
+          "type": "number"
+        },
+        "qc_tags": {
+          "description": "Список тегов, описывающих потенциальные проблемы или особенности данных (например, 'MISSING_PRICE_DATA').",
+          "items": {
+            "type": "string"
+          },
+          "title": "Qc Tags",
+          "type": "array"
+        },
+        "errors": {
+          "description": "Список текстовых сообщений о критических ошибках, помешавших обогащению.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Errors",
+          "type": "array"
+        }
+      },
+      "required": [
+        "confidence_score"
+      ],
+      "title": "QCContext",
+      "type": "object"
+    },
+    "TokenFlow": {
+      "description": "Описание одного движения токена (SPL или SOL) в рамках транзакции.",
+      "properties": {
+        "direction": {
+          "description": "Направление потока относительно инициатора транзакции.",
+          "enum": [
+            "IN",
+            "OUT"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "account": {
+          "description": "Адрес кошелька, с которым связано движение.",
+          "title": "Account",
+          "type": "string"
+        },
+        "mint": {
+          "description": "Адрес минта токена.",
+          "title": "Mint",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Количество токенов в минимальных единицах (lamports).",
+          "title": "Amount",
+          "type": "integer"
+        },
+        "ui_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Количество токенов в читаемом формате (с учетом decimals).",
+          "title": "Ui Amount"
+        },
+        "source": {
+          "description": "Источник данных, на основе которого был определен поток (например, 'token_balance_change').",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "direction",
+        "account",
+        "mint",
+        "amount",
+        "source"
+      ],
+      "title": "TokenFlow",
+      "type": "object"
+    }
+  },
+  "description": "Единая модель данных для обогащенной транзакции Solana.\nЯвляется основным контрактом данных для всего конвейера.",
+  "properties": {
+    "schema_version": {
+      "default": "2.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "enricher_meta": {
+      "$ref": "#/$defs/EnricherMetadata",
+      "description": "Метаданные об использованном обогатителе."
+    },
+    "transaction_signature": {
+      "description": "Уникальная подпись транзакции.",
+      "title": "Transaction Signature",
+      "type": "string"
+    },
+    "block_time": {
+      "description": "Время блока в формате Unix timestamp.",
+      "title": "Block Time",
+      "type": "integer"
+    },
+    "slot": {
+      "description": "Номер слота.",
+      "title": "Slot",
+      "type": "integer"
+    },
+    "is_successful": {
+      "description": "Флаг успешности выполнения транзакции на уровне блокчейна.",
+      "title": "Is Successful",
+      "type": "boolean"
+    },
+    "initiator": {
+      "description": "Адрес кошелька, оплатившего комиссию (fee payer).",
+      "title": "Initiator",
+      "type": "string"
+    },
+    "token_flows": {
+      "description": "Список всех движений токенов в транзакции.",
+      "items": {
+        "$ref": "#/$defs/TokenFlow"
+      },
+      "title": "Token Flows",
+      "type": "array"
+    },
+    "protocol_details": {
+      "description": "Список деталей по каждому взаимодействию с протоколами.",
+      "items": {
+        "$ref": "#/$defs/ProtocolDetails"
+      },
+      "title": "Protocol Details",
+      "type": "array"
+    },
+    "exotic_token_details": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ExoticTokenDetails"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Детали для токенов с нестандартной механикой."
+    },
+    "qc": {
+      "$ref": "#/$defs/QCContext"
+    },
+    "raw_transaction_details": {
+      "additionalProperties": true,
+      "description": "Полный JSON-объект транзакции от RPC-провайдера (Helius).",
+      "title": "Raw Transaction Details",
+      "type": "object"
+    }
+  },
+  "required": [
+    "enricher_meta",
+    "transaction_signature",
+    "block_time",
+    "slot",
+    "is_successful",
+    "initiator",
+    "qc",
+    "raw_transaction_details"
+  ],
+  "title": "EnrichmentContext",
+  "type": "object"
+}

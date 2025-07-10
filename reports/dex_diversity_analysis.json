@@ -1,0 +1,47 @@
+{
+  "analysis_id": "dex_diversity_analysis_002",
+  "analysis_type": "DEX Diversity Impact Analysis",
+  "model_name": "Random Forest",
+  "timestamp": "2024-01-26T10:15:00Z",
+  "summary": {
+    "status": "SUCCESS", 
+    "description": "Analysis of how DEX diversity affects token long-term performance"
+  },
+  "model_performance": {
+    "accuracy": 0.742,
+    "precision": 0.689,
+    "recall": 0.801,
+    "f1Score": 0.741,
+    "rocAuc": 0.798
+  },
+  "results": {
+    "feature_importance": [
+      { "feature": "dex_diversity_score", "importance": 0.398 },
+      { "feature": "total_pools_count", "importance": 0.287 },
+      { "feature": "cross_dex_volume_ratio", "importance": 0.189 },
+      { "feature": "unique_dex_count", "importance": 0.126 }
+    ],
+    "confusion_matrix": [
+      [132, 36],
+      [28, 158]
+    ],
+    "insights": [
+      "DEX diversity is the most important factor (39.8% importance)",
+      "Tokens appearing on 3+ DEXs have 73% higher survival rate",
+      "Cross-DEX volume distribution shows strong correlation with stability",
+      "Model shows good recall (80.1%) but moderate precision (68.9%)"
+    ]
+  },
+  "recommendations": [
+    "Focus monitoring on tokens appearing across multiple DEXs",
+    "Develop early warning system for single-DEX tokens",
+    "Investigate successful single-DEX outliers for pattern discovery",
+    "Consider combining with timing features for improved precision"
+  ],
+  "data_summary": {
+    "total_tokens_analyzed": 1854,
+    "multi_dex_tokens": 743,
+    "single_dex_tokens": 1111,
+    "analysis_period": "2024-01-15 to 2024-01-26"
+  }
+} 

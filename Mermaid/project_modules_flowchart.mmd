@@ -1,0 +1,41 @@
+```mermaid
+flowchart TD
+    A[main.py] --> B[parser/]
+    A --> C[processing/]
+    A --> D[enrich_parser/]
+    A --> E[db/]
+    A --> F[utils/]
+    A --> G[rpc/]
+    A --> H[analysis/]
+    A --> I[reporting/]
+    A --> J[wallet_links_extractor.py]
+
+    B --> B1[transaction_parser_core.py]
+    B --> B2[instruction_parser.py]
+    B --> B3[program_parsers.py]
+    B --> B4[constants.py]
+    B --> B5[utils.py]
+    B --> B6[idl_loader.py]
+
+    C --> C1[transaction_processor.py]
+
+    D --> D1[enrich/raydium.py]
+    D --> D2[enrich/jupiter.py]
+    D --> D3[enrich/orca.py]
+    D --> D4[enrich/utils_qc.py]
+    D --> D5[enrich/raydium_price_impact.py]
+
+    E --> E1[db_manager.py]
+    E --> E2[db_writer.py]
+    E --> E3[db_ops.py]
+
+    F --> F1[signature_handler.py]
+
+    G --> G1[helius_rpc.py]
+    G --> G2[api_keys.py]
+
+    H --> H1[patterns.py]
+    H --> H2[analyzer.py]
+
+    I --> I1[summary.py]
+``` 

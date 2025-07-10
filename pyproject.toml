@@ -1,0 +1,19 @@
+[project]
+name = "bant"
+version = "0.1.0"
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+select = ["E", "F", "W", "I"]
+line-length = 88
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+testpaths = [
+  "tests"
+] 

@@ -1,0 +1,9 @@
+black
+ruff
+pydantic
+psycopg2-binary
+requests
+streamlit
+borsh
+borsh-construct
+chardet 

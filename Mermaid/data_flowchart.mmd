@@ -1,0 +1,23 @@
+```mermaid
+flowchart TD
+    main[main.py]
+    signatures[fetch_signatures_for_token]
+    filter[filter_new_signatures]
+    process[process_single_transaction]
+    enrich[enrich_*_swap]
+    save[save_parsed_transaction]
+    db[(PostgreSQL DB)]
+    meta[enrich_token_metadata]
+    wallet[wallet_links_extractor.py]
+
+    main --> signatures
+    signatures --> filter
+    filter --> process
+    process --> enrich
+    process --> wallet
+    enrich --> save
+    wallet --> save
+    save --> db
+    process --> meta
+    meta --> db
+``` 

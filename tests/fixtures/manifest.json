@@ -1,0 +1,4 @@
+{
+  "raydium_2WjgSSiE.raw.json": "Raydium V4 swap, стандартный happy path для проверки базовой валидации.",
+  "raydium_2WjgSSiE.enrich.json": "Enrichment для Raydium V4 swap, соответствует raw-файлу, используется для теста diff engine."
+} 

@@ -1,0 +1,58 @@
+```mermaid
+erDiagram
+    TRANSACTIONS {
+        text signature PK
+        timestamp block_time
+        bigint slot
+        text fee_payer
+        jsonb meta_raw
+        jsonb message_raw
+        text transaction_type
+        text[] detected_patterns
+        text[] involved_platforms
+        jsonb involved_tokens_net_flow
+        jsonb additional_context
+    }
+    INSTRUCTIONS {
+        int id PK
+        text signature FK
+        int instruction_index
+        text program_id
+        text program_name
+        jsonb details
+    }
+    TOKEN_TRANSFERS {
+        int id PK
+        text signature FK
+        text mint_address
+        text source_owner
+        text destination_owner
+        numeric amount
+    }
+    WALLET_LINKS {
+        int id PK
+        text wallet_a
+        text wallet_b
+        text link_type
+        numeric weight
+        text tx_signature FK
+        jsonb context
+    }
+    DISCOVERED_POOLS {
+        text token_mint_address
+        text pool_address
+        text dex_id
+        text pool_type
+    }
+    TOKEN_METADATA {
+        text mint_address PK
+        text symbol
+        text name
+        int decimals
+        text logo_uri
+    }
+    TRANSACTIONS ||--o{ INSTRUCTIONS : "signature"
+    TRANSACTIONS ||--o{ TOKEN_TRANSFERS : "signature"
+    TRANSACTIONS ||--o{ WALLET_LINKS : "tx_signature"
+    TOKEN_METADATA ||--o{ DISCOVERED_POOLS : "token_mint_address"
+} 

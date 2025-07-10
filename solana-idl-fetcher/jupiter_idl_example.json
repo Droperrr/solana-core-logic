@@ -1,0 +1,78 @@
+{
+  "version": "0.1.0",
+  "name": "jupiter_aggregator_v6",
+  "instructions": [
+    {
+      "name": "route",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "inputTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "outputTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "routePlan",
+          "type": {
+            "vec": {
+              "defined": "RoutePlanStep"
+            }
+          }
+        },
+        {
+          "name": "inAmount",
+          "type": "u64"
+        },
+        {
+          "name": "quotedOutAmount",
+          "type": "u64"
+        },
+        {
+          "name": "slippageBps",
+          "type": "u16"
+        },
+        {
+          "name": "platformFeeBps",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "RoutePlanStep",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "swap",
+            "type": "string"
+          },
+          {
+            "name": "percent",
+            "type": "u8"
+          },
+          {
+            "name": "inputIndex",
+            "type": "u8"
+          },
+          {
+            "name": "outputIndex",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
